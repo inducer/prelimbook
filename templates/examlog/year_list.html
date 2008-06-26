@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title%} Search by Year {%endblock%}
+{% block content%} 
+
+<h2>Search by Year</h2>
+
+<ul>
+{% for object in object_list %}
+  <li>
+    <a href="{{object.year}}/">{{object.year}}</a>
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

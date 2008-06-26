@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title%} Search Results {%endblock%}
+{% block content%} 
+
+<h2>Search Results</h2>
+
+{% for object in object_list %}
+  <div class="dbitem">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>
+          {{object.student_first_name|escape}}
+          {{object.student_last_name|escape}}
+        </td>
+      </tr>
+      <tr>
+        <th>Year</th>
+        <td>
+          {{object.year|escape}}
+        </td>
+      </tr>
+      <tr>
+        <th>Committee Chair</th>
+        <td>
+          {% if object.chair %}
+            {{object.chair|escape}}
+          {% else %}
+            Not known
+          {% endif %}
+        </td>
+      </tr>
+      {% if object.get_report_url %}
+        <tr>
+          <th>Report</th>
+          <td>
+            <a href="{{object.get_report_url}}">Download PDF</a>
+          </td>
+        </tr>
+      {% endif %}
+      <tr>
+        <th style="vertical-align:top">Subjects</th>
+        <td>
+          <ul>
+            {% for subj in object.examsubject_set.all %}
+            <li>
+            <div class="subjectentry">
+              <b>{{subj.exam_type|escape}}: {{subj.lecture|escape}} </b><br/>
+              Examiner: {{subj.examiner|escape}}<br/>
+              {% if subj.get_subject_report_url %}
+                <a href="{{subj.get_subject_report_url}}">Download Subject PDF</a><br/>
+              {% endif %}
+              {% if subj.remarks %}
+                Remarks: {{subj.remarks|escape}}<br/>
+              {% endif %}
+            </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+       
+    </table>
+  </div>
+{% endfor %}
+
+{% if is_paginated %}
+<div class="pagination">
+  {% if has_previous %}
+  <a href="?page={{previous}}">previous page</a>
+  {% endif %}
+  {% if has_next %}
+  <a href="?page={{next}}">next page</a>
+  {% endif %}
+
+  (this is page {{page}})
+</div>
+{% endif %}
+
+{% endblock %}
+

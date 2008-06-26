@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>{% block title %}Main Page{% endblock %} - DAM Prelim Book</title>
+  <link rel="stylesheet" type="text/css" href="{{staticsite_root}}style.css" media="screen" />
+</head>
+<body>
+<div id="header">
+<h1>DAM Prelim Book</h1>
+ <div id="menu">
+  <ul id="nav">
+    <li><a href="{{dynsite_root}}">Home</a></li>
+    <li><a href="{{dynsite_root}}admin/examlog/examreport/add/">Contribute</a></li>
+  </ul>
+ </div>
+</div>
+<div id="content">
+<div id="right">
+  {% block content %}
+  <h2>Welcome</h2>
+  <p>
+  The DAM prelim book lets you tap into the wisdom of previous generations
+  of grad students, and now without having to root through piles of yellowing
+  paper that's been ripped apart by the student before you.
+  </p>
+  <p>
+  <b>Please help</b> get the electronic prelim book off the ground. Jean still has the
+  paper version, which is now split into a "scanned" and a "non-scanned" part.
+  If everybody chips in and scans a few pages, we'll be there in no time.
+  </p>
+  <p>
+  <b>If you have not submitted your prelim yet</b>, now's an excellent time to do
+  so. Just click "Contribute" on the right.
+  </p>
+  <p>
+  If you run into problems with this page, drop me an email at 
+  <tt>kloeckner &auml;t dam d&ouml;t brown d&ouml;t edu</tt>.
+  </p>
+  {% endblock %}
+</div>
+	
+<div id="left">
+  <div class="box">
+    <ul>
+      <li><a href="{{dynsite_root}}admin/examlog/examreport/add/">Contribute</a></li>
+      <li><a href="{{dynsite_root}}by_year/">Search by Year</a></li>
+      <li><a href="{{dynsite_root}}by_student/">Search by Student</a></li>
+      <li><a href="{{dynsite_root}}by_class/">Search by Class</a></li>
+      <li><a href="{{dynsite_root}}by_prof/">Search by Professor</a></li>
+      <li><a href="http://www.dam.brown.edu/">Division Homepage</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{{dynsite_root}}admin/">Site Admin</a></li>
+      <li><a href="{{dynsite_root}}logout/">Logout</a></li>
+      {% endif %}
+    </ul>
+  </div>
+		
+  <div class="box">
+    If you run into problems with this page, drop me an email at 
+    <tt>kloeckner &auml;t dam d&ouml;t brown d&ouml;t edu</tt>.
+  </div>
+
+  <div class="box">
+    Design by <a href="http://www.minimalistic-design.net">Minimalistic Design</a>,
+    downloaded from <a href="http://www.oswd.org/">Open Source Web Design</a>. The 
+    design is licensed under the GPL.
+
+    This is a <a href="http://www.djangoproject.com">Django</a> site.
+  </div>
+</div>
+</div>
+</body>
+</html>
