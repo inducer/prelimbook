@@ -31,11 +31,11 @@
           {% endif %}
         </td>
       </tr>
-      {% if object.get_report_url %}
+      {% if object.report %}
         <tr>
           <th>Report</th>
           <td>
-            <a href="{{object.get_report_url}}">Download PDF</a>
+            <a href="{{object.report.url}}">Download PDF</a>
           </td>
         </tr>
       {% endif %}
@@ -48,8 +48,8 @@
             <div class="subjectentry">
               <b>{{subj.exam_type|escape}}: {{subj.lecture|escape}} </b><br/>
               Examiner: {{subj.examiner|escape}}<br/>
-              {% if subj.get_subject_report_url %}
-                <a href="{{subj.get_subject_report_url}}">Download Subject PDF</a><br/>
+              {% if subj.subject_report %}
+                <a href="{{subj.subject_report.url}}">Download Subject PDF</a><br/>
               {% endif %}
               {% if subj.remarks %}
                 Remarks: {{subj.remarks|escape}}<br/>

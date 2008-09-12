@@ -3,6 +3,9 @@ from django.conf import settings
 from prelimbook.examlog import models
 import re
 
+from django.contrib import admin
+admin.autodiscover()
+
 #urlb = r"^%s" % re.escape(settings.DYNSITE_ROOT.lstrip("/"))
 urlb = "^"
 
@@ -50,5 +53,5 @@ urlpatterns = patterns('',
         (urlb+r'by_year/(?P<year>[0-9]+)/$',
                 'prelimbook.examlog.views.by_year'),
 
-        (urlb+r'admin/', include('django.contrib.admin.urls')),
+        (urlb+r'admin/(.*)', admin.site.root),
 )
